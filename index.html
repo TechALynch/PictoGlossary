@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <title>PictoGlossary</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home </a></li>
+            <li><a href="#contact">Contact </a></li>
+            <li><a href="#about">About </a></li>
+        </ul>
+    </nav>
+    <div>
+        <h1>PictoGlossary</h1>
+    </div>
+    <audio id="sound"></audio>
+    <div class="container" id="container">
+        <div class="search-box">
+            <input type="text" placeholder="Type the word here..." id="inp-word"/>
+            <button id="search-btn">Search</button>
+        </div>
+        <div class="result" id="result">
+            <div class="word">
+                <h3>Sample</h3>
+                <button>
+                    <!-- https://fontawesome.com/icons/volume-high?f=classic&s=solid -->
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+            </div>
+            <div class="details">
+                <p>Parts of Speech</p>
+                <p>/Sample/</p>
+            </div>
+            <p class="word-meaning">
+                <!-- Defintion(s) go here (Empty p) -->
+                (Def. Goes Here) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p class="word-example" id="word-example">
+                <!-- Definition Example(s) go here (Empty p) -->
+                (Def Ex. goes here) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="searchImage" id="searchImage">
+                <img src="./dictionary.png">
+            </div>
+            <div>
+                <button id="toggleButton">View Less
+                </button>
+            </div>
+        </div>
+    </div>
+    <p class="space"></p>
+</body>
+</html>
+
+
+
+
