@@ -6,6 +6,8 @@
     <!-- https://cdnjs.com/libraries/font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link rel="stylesheet" href="styles.css" />
+    <!-- link axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
     <title>PictoGlossary</title>
 </head>
@@ -28,17 +30,17 @@
         </div>
         <div class="result" id="result">
             <div class="word">
-                <h3>Sample</h3>
+                <h3 id="wordName">Sample</h3>
                 <button>
                     <!-- https://fontawesome.com/icons/volume-high?f=classic&s=solid -->
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
             </div>
             <div class="details">
-                <p>Parts of Speech</p>
-                <p>/Sample/</p>
+                <p id="pos">Parts of Speech</p>
+                <p id="phonetic">/Sample/</p>
             </div>
-            <p class="word-meaning">
+            <p class="word-meaning" id="def">
                 <!-- Defintion(s) go here (Empty p) -->
                 (Def. Goes Here) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
@@ -50,7 +52,7 @@
                 <img src="./dictionary.png">
             </div>
             <div>
-                <button id="toggleButton">View Less
+                <button id="toggleButton">View Less...
                 </button>
             </div>
         </div>
