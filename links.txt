@@ -32,3 +32,10 @@ fetch(apiUrl, {
     // Handle any errors that occur during the request
     console.error('Error:', error);
   });
+
+
+
+// let sound = response.data[0].phonetics[0].audio;
+// apiMp3.setAttribute("src", `${sound}`)
+// console.log(sound)
+// console.log(apiMp3)

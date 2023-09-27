@@ -42,30 +42,47 @@ btn.addEventListener("click", async () => {
        //Get Word Example(s)
        let wordExReturn = response.data[0].meanings[0].definitions[0].example;
        let ex = document.getElementById("word-example");
-       ex.innerHTML = `Ex. ${wordExReturn}`;
-        ////Iteration
-        // for (let i = 0; i < response.data.definitions.length; i++) {
-        // let def = response.data[i].meanings[0]
-        // let defUpdate = document.getElementsByClassName("word-meaning")
-        // defUpdate.textContent = def
-        // defUpdate.appendChild(defUpdate)
-        // }      
-
-        let sound = response.data[0].phonetics[0].audio;
-        apiMp3.setAttribute("src", `${sound}`)
-        console.log(sound)
-        console.log(apiMp3)
+       ex.innerHTML = `Ex. ${wordExReturn}`;     
         
+        // Get the audio sources from phonetics
+        let phonetics = response.data[0].phonetics;
+        let audioSource = null;
+
+        for (let i = 0; i < phonetics.length; i++) {
+            if (phonetics[i].audio) {
+                audioSource = phonetics[i].audio;
+                break; // Exit the loop as soon as an audio source is found
+            }
+        }
+
+        if (audioSource) {
+            wordPronunciation.style.display = "block";
+            apiMp3.setAttribute("src", audioSource);
+        } else {
+            // If no audio source is found, display an error message
+            apiMp3.setAttribute("src", null);
+            alert(`Error: Pronunciation audio not available for this word in API/database!.`);
+            wordPronunciation.style.display = "none";
+            }
+
         // Error message
     } catch (error) {
         // Show an error message in a popup
-        alert(`Error: Word was not found in API/database! Please re-enter a valid term`);
+        alert(`Error: Word was not found in API/database! Please re-enter a valid term!`);
     }
 });
 
 const wordPronunciation = document.getElementById("wordPronunciationBtn");
+let audioSource =! null;
+wordPronunciation.style.display = "block";
 wordPronunciation.addEventListener('click', function () {
-    apiMp3.play();
+    if (audioSource) {
+        apiMp3.play();
+    } else {
+        wordPronunciation.style.display = "none";
+        // If no audio source is found, display an error message
+        alert(`Error: Pronunciation audio not available for this word in API/database!.`);
+    }
 });
 
 const image = document.getElementById("searchImage")
