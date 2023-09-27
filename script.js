@@ -2,7 +2,10 @@ console.log("working")
 
 // Global variables
 const result = document.getElementById("result");
-const sound = document.getElementById("sound");
+
+// const sound = document.getElementById("sound");
+const apiMp3 = document.getElementById("apiAudio");
+
 const btn = document.getElementById("search-btn");
 
 btn.addEventListener("click", async () => {
@@ -39,20 +42,30 @@ btn.addEventListener("click", async () => {
        //Get Word Example(s)
        let wordExReturn = response.data[0].meanings[0].definitions[0].example;
        let ex = document.getElementById("word-example");
-       ex.innerHTML = `${wordExReturn}`;
+       ex.innerHTML = `Ex. ${wordExReturn}`;
         ////Iteration
         // for (let i = 0; i < response.data.definitions.length; i++) {
         // let def = response.data[i].meanings[0]
         // let defUpdate = document.getElementsByClassName("word-meaning")
         // defUpdate.textContent = def
         // defUpdate.appendChild(defUpdate)
-        // }
+        // }      
 
+        let sound = response.data[0].phonetics[0].audio;
+        apiMp3.setAttribute("src", `${sound}`)
+        console.log(sound)
+        console.log(apiMp3)
+        
         // Error message
     } catch (error) {
         // Show an error message in a popup
         alert(`Error: Word was not found in API/database! Please re-enter a valid term`);
     }
+});
+
+const wordPronunciation = document.getElementById("wordPronunciationBtn");
+wordPronunciation.addEventListener('click', function () {
+    apiMp3.play();
 });
 
 const image = document.getElementById("searchImage")
