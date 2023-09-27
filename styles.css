@@ -172,7 +172,7 @@ a:hover {
 }
 
 #searchImage,
-#word-example {
+#wordExample {
     display: block;
     display: flex;
     justify-content: left;

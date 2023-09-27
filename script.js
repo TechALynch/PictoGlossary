@@ -1,18 +1,22 @@
-console.log("working")
+// console.log("working")
 
-// Global variables
-const result = document.getElementById("result");
+// // Global variables
+// const result = document.getElementById("result");
 
-// const sound = document.getElementById("sound");
 const apiMp3 = document.getElementById("apiAudio");
-
 const btn = document.getElementById("search-btn");
-
 const dicDefaultImage = document.querySelector("#searchImage");
+const wordName = document.getElementById("wordName");
+const pos = document.getElementById("pos");
+const phonetic = document.getElementById("phonetic");
+const def = document.getElementById("def");
+const ex = document.getElementById("wordExample");
 
 btn.addEventListener("click", async () => {
-    let dicUrlApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
-    let inpWord = document.getElementById("inp-word").value.toLowerCase(); // Gets the value (char) of the input
+    const dicUrlApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+    
+    // Gets the value (char) of the input
+    const inpWord = document.getElementById("inp-word").value.toLowerCase();
     console.log(inpWord);
 
     try {
@@ -21,76 +25,86 @@ btn.addEventListener("click", async () => {
         console.log(response)
 
         // Drilling our data response and setting DOM
-        //Return Word
+        // Return Word
         let WordNameReturn = response.data[0].word;
-        let wordName = document.getElementById("wordName");
         wordName.innerHTML = `${WordNameReturn}`;
 
         // Get Part of speech(s)
         let posReturn = response.data[0].meanings[0].partOfSpeech;
-        let pos = document.getElementById("pos");
         pos.innerHTML = `${posReturn}`;
 
         // Get phonetic(s)
-       let phoneticReturn = response.data[0].phonetic;
-       let phonetic = document.getElementById("phonetic");
+        let phoneticReturn = response.data[0].phonetic;
         phonetic.innerHTML = `${phoneticReturn}`;
 
         // Get Definition(s)
-       let defReturn = response.data[0].meanings[0].definitions[0].definition;
-       let def = document.getElementById("def");
-       def.innerHTML = `${defReturn}`;
+        let defReturn = response.data[0].meanings[0].definitions[0].definition;
+        def.innerHTML = `${defReturn}`;
 
-       //Get Word Example(s)
-       let wordExReturn = response.data[0].meanings[0].definitions[0].example;
-       let ex = document.getElementById("word-example");
-       ex.innerHTML = `Ex. ${wordExReturn}`;     
+        //Get Word Example(s)
+        let wordExReturn = response.data[0].meanings[0].definitions[0].example;
+        ex.innerHTML = `Ex. ${wordExReturn}`;     
         
         // Get the audio sources from phonetics
         let phonetics = response.data[0].phonetics;
         let audioSource = null;
 
+        //Loop though array and find Audio file (.mp3)
         for (let i = 0; i < phonetics.length; i++) {
             if (phonetics[i].audio) {
                 audioSource = phonetics[i].audio;
                 break; // Exit the loop as soon as an audio source is found
             }
         }
-
         if (audioSource) {
             wordPronunciation.style.display = "block";
             apiMp3.setAttribute("src", audioSource);
         } else {
+            
             // If no audio source is found, display an error message
             apiMp3.setAttribute("src", null);
-            alert(`Error: Pronunciation audio not available for this word in API/database!.`);
-            wordPronunciation.style.display = "none";
+            alert(`Error: Pronunciation audio not available for this word in dictionary API/database!.`);
+            wordPronunciation.style.display = "none"; // Make image invisable if none exist
             }
             
-        //Pexels Image gen
-        let headersList = {
-        "Authorization": "4Rw0XFcv6C27LQjtS8fc7KqoH4ZlqKPlgGczMbv5kR1Uhx8UWExlICIZ" 
-        }
+        //Pexels Image generation based on inputText
+        try {
+            let headersList = {
+            "Authorization": "4Rw0XFcv6C27LQjtS8fc7KqoH4ZlqKPlgGczMbv5kR1Uhx8UWExlICIZ" 
+            }
 
-        let reqOptions = {
-        url: `https://api.pexels.com/v1/search?query=${inpWord}&per_page=1`,
-        method: "GET",
-        headers: headersList,
-        }
+            let reqOptions = {
+            url: `https://api.pexels.com/v1/search?query=${inpWord}&per_page=1`,
+            method: "GET",
+            headers: headersList,
+            }
 
-        let response2 = await axios.request(reqOptions);
-        console.log(response2.data);
+            let response2 = await axios.request(reqOptions);
+            console.log(response2.data);
 
-        let imageSrc = response2.data.photos[0].src.landscape
-        dicDefaultImage.innerHTML = `<img src=${imageSrc}>`
-        console.log(imageSrc)
+            let imageSrc = response2.data.photos[0].src.landscape
+            dicDefaultImage.innerHTML = `<img src=${imageSrc}>`
+            console.log(imageSrc)
 
         // Error message
-    } catch (error) {
+        } catch (error) {
         // Show an error message in a popup
-        alert(`Error: Word was not found in API/database! Please re-enter a valid term!`);
+        alert(`Error: Word image was not found in pexels API/database! Please re-enter a valid term to view an image!`);
+        dicDefaultImage.innerHTML = ''
     }
 
+    // Error message
+    } catch (error) {
+        // Show an error message in a popup
+        alert(`Error: Word was not found in dictionary API/database! Please re-enter a valid term!`);
+        wordName.innerHTML = ``
+        pos.innerHTML = ``
+        phonetic.innerHTML = ``
+        ex.innerHTML = ``
+        def.innerHTML = ``
+        dicDefaultImage.innerHTML = ``
+        toggleButton.style.display = "none";
+    }
 });
 
 const wordPronunciation = document.getElementById("wordPronunciationBtn");
@@ -102,12 +116,12 @@ wordPronunciation.addEventListener('click', function () {
     } else {
         wordPronunciation.style.display = "none";
         // If no audio source is found, display an error message
-        alert(`Error: Pronunciation audio not available for this word in API/database!.`);
+        alert(`Error: Pronunciation audio not available for this word in dictionary API/database!.`);
     }
 });
 
 const image = document.getElementById("searchImage")
-const wordExamples = document.getElementById("word-example")
+const wordExamples = document.getElementById("wordExample")
 const toggleButton = document.getElementById("toggleButton")
 let isImageVisible = true;
 
@@ -116,12 +130,12 @@ toggleButton.addEventListener("click", function () {
         case true:
             wordExamples.style.display = "none"; // hide
             image.style.display = "none";
-            toggleButton.textContent = "View More";
+            toggleButton.textContent = "View More...";
             break;
         default:
             wordExamples.style.display = "block"; // display
             image.style.display = "block";
-            toggleButton.textContent = "View Less";
+            toggleButton.textContent = "View Less...";
     }
     isImageVisible = !isImageVisible
 });
