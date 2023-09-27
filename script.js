@@ -8,6 +8,8 @@ const apiMp3 = document.getElementById("apiAudio");
 
 const btn = document.getElementById("search-btn");
 
+const dicDefaultImage = document.querySelector("#searchImage");
+
 btn.addEventListener("click", async () => {
     let dicUrlApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     let inpWord = document.getElementById("inp-word").value.toLowerCase(); // Gets the value (char) of the input
@@ -64,12 +66,31 @@ btn.addEventListener("click", async () => {
             alert(`Error: Pronunciation audio not available for this word in API/database!.`);
             wordPronunciation.style.display = "none";
             }
+            
+        //Pexels Image gen
+        let headersList = {
+        "Authorization": "4Rw0XFcv6C27LQjtS8fc7KqoH4ZlqKPlgGczMbv5kR1Uhx8UWExlICIZ" 
+        }
+
+        let reqOptions = {
+        url: `https://api.pexels.com/v1/search?query=${inpWord}&per_page=1`,
+        method: "GET",
+        headers: headersList,
+        }
+
+        let response2 = await axios.request(reqOptions);
+        console.log(response2.data);
+
+        let imageSrc = response2.data.photos[0].src.landscape
+        dicDefaultImage.innerHTML = `<img src=${imageSrc}>`
+        console.log(imageSrc)
 
         // Error message
     } catch (error) {
         // Show an error message in a popup
         alert(`Error: Word was not found in API/database! Please re-enter a valid term!`);
     }
+
 });
 
 const wordPronunciation = document.getElementById("wordPronunciationBtn");
