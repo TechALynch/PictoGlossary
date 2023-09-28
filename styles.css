@@ -11,6 +11,7 @@
 html{
     scroll-behavior: smooth;
     scroll-padding: 10rem;
+    /* height: 1000px */
 }
 
 h1{
@@ -29,6 +30,7 @@ img{
     margin-bottom: 10px;
     max-width: 350px;
     max-height: 250px;
+    cursor: pointer;
 }
 
 /* ul {
@@ -49,9 +51,9 @@ img{
 nav {
     background-color: rgba(215, 215, 215, 0.78); /* Background color */
     margin-top: 0px;
-    margin-bottom: 50px;
     padding: 40px;
     font-size: 15px;
+    justify-content: center;
 }
 
 ul {
@@ -82,6 +84,7 @@ i{
 /* Change link color on hover */
 a:hover {
     background-color: #555; /* Darker background color on hover */
+    cursor: pointer;
 }
 
 /* .bottom-Nav{
@@ -90,9 +93,15 @@ a:hover {
     justify-content: center;
     align-items: ;
 } */
+.title{
+    margin-top: 50px;
+    cursor: pointer;
+}
+
 .search-box button:hover{
     background-color: #555; 
     color: #fff; /* White text color on hover */
+    cursor: pointer;
 }
 .container{
     background-color: #ffffff;
@@ -127,6 +136,7 @@ a:hover {
     outline: none;
     border-bottom: 3px solid #5ba8fac0;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .search-box button{
@@ -184,7 +194,7 @@ a:hover {
 }
 
 /* https://www.shapedivider.app/ */
-.custom-shape-divider-bottom-1695917241 {
+.custom-shape-divider-bottom-1695931007 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -192,26 +202,21 @@ a:hover {
     overflow: hidden;
     line-height: 0;
 }
-
-/* https://www.shapedivider.app/ */
-.custom-shape-divider-bottom-1695917241 svg {
+.custom-shape-divider-bottom-1695931007 svg {
     position: relative;
     display: block;
     width: calc(300% + 1.3px);
-    /* height of footer */
-    height: 300px;
+    height: 49px;
 }
-
-/* https://www.shapedivider.app/ */
-.custom-shape-divider-bottom-1695917241 .shape-fill {
+.custom-shape-divider-bottom-1695931007 .shape-fill {
     fill: #D7D7D7;
 }
 
-#footer{
-    /* margin-top: 0px;
-    margin-bottom: 50px; */
-    height: -100px;
-    position: absolute;
+.copyright{
+    display: flex;
+    justify-content: right;
+    color: #fff;
+    position: relative;
 }
 
 #searchImage,
@@ -226,12 +231,15 @@ a:hover {
     display: none;
     margin-left: 50px;
     margin-right: auto;
+    cursor: pointer;
 }
-
 
 /* Additional styling for the button */
 #toggleButton {
     display: block;
     padding: 10px 20px;
     cursor: pointer;
+}
+#footer{
+    position: fixed;
 }
