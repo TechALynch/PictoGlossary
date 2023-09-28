@@ -7,6 +7,12 @@
 * :not(i){
     font-family: "Times New Roman", Times, serif; /* All elements on the page except elements i will be Times New Roman */
 }
+
+html{
+    scroll-behavior: smooth;
+    scroll-padding: 10rem;
+}
+
 h1{
     color: white;
     font-size: 50px;
@@ -65,6 +71,12 @@ a {
     padding: 40px 20px; 
     transition: background-color 0.3s ease; /* Smooth hover transition */
     border-radius: 5px; /* Add rounded corners */
+}
+
+/* Pronunciation button */
+i{
+    margin-left: -20px;
+    margin-right: auto;  
 }
 
 /* Change link color on hover */
@@ -171,12 +183,51 @@ a:hover {
     margin-top: 30px;
 }
 
+/* https://www.shapedivider.app/ */
+.custom-shape-divider-bottom-1695917241 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+/* https://www.shapedivider.app/ */
+.custom-shape-divider-bottom-1695917241 svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    /* height of footer */
+    height: 300px;
+}
+
+/* https://www.shapedivider.app/ */
+.custom-shape-divider-bottom-1695917241 .shape-fill {
+    fill: #D7D7D7;
+}
+
+#footer{
+    /* margin-top: 0px;
+    margin-bottom: 50px; */
+    height: -100px;
+    position: absolute;
+}
+
 #searchImage,
 #wordExample {
     display: block;
     display: flex;
     justify-content: left;
 }
+
+/* Pronunciation button */
+#wordPronunciationBtn{
+    display: none;
+    margin-left: 50px;
+    margin-right: auto;
+}
+
 
 /* Additional styling for the button */
 #toggleButton {

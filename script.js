@@ -11,6 +11,8 @@ const pos = document.getElementById("pos");
 const phonetic = document.getElementById("phonetic");
 const def = document.getElementById("def");
 const ex = document.getElementById("wordExample");
+// const pronounce = document.getElementById("i");
+const wordPronunciation = document.getElementById("wordPronunciationBtn");
 
 btn.addEventListener("click", async () => {
     const dicUrlApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -107,9 +109,8 @@ btn.addEventListener("click", async () => {
     }
 });
 
-const wordPronunciation = document.getElementById("wordPronunciationBtn");
 let audioSource =! null;
-wordPronunciation.style.display = "block";
+wordPronunciation.style.display = "none";
 wordPronunciation.addEventListener('click', function () {
     if (audioSource) {
         apiMp3.play();
