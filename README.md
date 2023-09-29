@@ -46,10 +46,10 @@ We value your feedback and are committed to improving your experience with Picto
 
 - Email: [contact@pictoglossaryapp.com](mailto:contact@pictoglossaryapp.com)
 
-## License
+## Languages Used
 
-This project is licensed under the [MIT License](LICENSE.md).
+- **JavaScript**: <i class="fab fa-js"></i>
+- **HTML**: <i class="fab fa-html5"></i>
+- **CSS**: <i class="fab fa-css3"></i>
 
----
-
-Visit our website: [www.pictoglossaryapp.com](https://www.pictoglossaryapp.com)
+Visit our website: [https://pictoglossary.surge.sh](https://pictoglossary.surge.sh)
