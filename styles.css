@@ -33,20 +33,11 @@ img{
     cursor: pointer;
 }
 
-/* ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  li {
-    display: inline;
-    padding: 0px, 10px, 0px, 10px;
-  } */
-  /* Basic reset and styling for the navigation bar */
+hr{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
 
 nav {
     background-color: rgba(215, 215, 215, 0.78); /* Background color */
@@ -81,21 +72,58 @@ i{
     margin-right: auto;  
 }
 
+/* Style form elements */
+label {
+    font-size: 1.2rem; /* Adjust the font size as needed */
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.2rem; /* Adjust the font size as needed */
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem; /* Adjust the font size as needed */
+}
+
+input[type="submit"]:hover {
+    background-color: #555; 
+    color: #fff; /* White text color on hover */
+    cursor: pointer;
+}
+
+
 /* Change link color on hover */
 a:hover {
     background-color: #555; /* Darker background color on hover */
     cursor: pointer;
 }
 
-/* .bottom-Nav{
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    align-items: ;
-} */
+.contact{
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
 .title{
     margin-top: 50px;
     cursor: pointer;
+}
+
+.lightGray{
+    color: lightgray;
 }
 
 .search-box button:hover{
@@ -116,12 +144,6 @@ a:hover {
     border-radius: 10px;
     box-shadow: 0 20px 40px rgba(38, 33, 61, 0.5);
 }
-
-/* .searchImage{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
 
 .search-box{
     width: 100%;
@@ -220,6 +242,44 @@ a:hover {
     margin-right: 15px;
     margin-left: 1550px;
     position: fixed;
+}
+
+.white{
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-top: 50px;
+}
+
+.welcome{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style the intro section */
+.intro {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+/* Style the features section */
+.features {
+    margin-bottom: 20px;
+}
+
+/* Style the how-it-works section */
+.how-it-works {
+    margin-bottom: 20px;
+}
+
+/* Style the contact section */
+.contact {
+    margin-bottom: 20px;
 }
 
 #searchImage,
