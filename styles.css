@@ -206,7 +206,7 @@ a:hover {
     position: relative;
     display: block;
     width: calc(300% + 1.3px);
-    height: 49px;
+    height: 149px;
 }
 .custom-shape-divider-bottom-1695931007 .shape-fill {
     fill: #D7D7D7;
@@ -216,7 +216,10 @@ a:hover {
     display: flex;
     justify-content: right;
     color: #fff;
-    position: relative;
+    margin-top: 330px;
+    margin-right: 15px;
+    margin-left: 1550px;
+    position: fixed;
 }
 
 #searchImage,

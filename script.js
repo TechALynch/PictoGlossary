@@ -43,10 +43,33 @@ btn.addEventListener("click", async () => {
         let defReturn = response.data[0].meanings[0].definitions[0].definition;
         def.innerHTML = `${defReturn}`;
 
-        //Get Word Example(s)
-        let wordExReturn = response.data[0].meanings[0].definitions[0].example;
-        ex.innerHTML = `Ex. ${wordExReturn}`;     
+        // //Get Word Example(s)
+        // let wordExReturn = response.data[0].meanings[0].definitions[0].example;
+        // ex.innerHTML = `Ex. ${wordExReturn}`;  
         
+        const wordData = response.data[0];
+         // Loop through meanings to find an example
+         let exampleFound = false;
+         // Loop through the meanings of the wordData
+         for (const meaning of wordData.meanings) {
+            // Check if the meaning has definitions and at least one definition exists
+             if (meaning.definitions && meaning.definitions.length > 0) {
+                 let defReturn = meaning.definitions[0].definition || 'N/A';
+                 def.innerHTML = `${defReturn}`;
+                 if (meaning.definitions[0].example) {
+                     let wordExReturn = meaning.definitions[0].example;
+                     ex.innerHTML = `Ex. ${wordExReturn}`;
+                     exampleFound = true;
+                     break; // Exit the loop once an example is found
+                 }
+             }
+         }
+
+         // If no example was found, display N/A
+         if (!exampleFound) {
+             ex.innerHTML = 'Ex. N/A';
+         }
+
         // Get the audio sources from phonetics
         let phonetics = response.data[0].phonetics;
         let audioSource = null;
@@ -106,11 +129,13 @@ btn.addEventListener("click", async () => {
         def.innerHTML = ``
         dicDefaultImage.innerHTML = ``
         toggleButton.style.display = "none";
+        wordPronunciation.style.display = "none"; // Make image invisable if none exist
     }
 });
 
 let audioSource =! null;
 wordPronunciation.style.display = "none";
+
 wordPronunciation.addEventListener('click', function () {
     if (audioSource) {
         apiMp3.play();
@@ -126,6 +151,7 @@ const wordExamples = document.getElementById("wordExample")
 const toggleButton = document.getElementById("toggleButton")
 let isImageVisible = true;
 
+// View More/less info toggle switch 
 toggleButton.addEventListener("click", function () {
     switch (isImageVisible) {
         case true:
