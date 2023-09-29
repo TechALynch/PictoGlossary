@@ -1,7 +1,5 @@
 # PictoGlossary
 
-# Pictoglossary App
-
 ![Pictoglossary Logo](./dictionary.png)
 
 ## Overview
@@ -48,8 +46,8 @@ We value your feedback and are committed to improving your experience with Picto
 
 ## Languages Used
 
-- **JavaScript**: <i class="fab fa-js"></i>
-- **HTML**: <i class="fab fa-html5"></i>
-- **CSS**: <i class="fab fa-css3"></i>
+- **CSS**: ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+- **HTML**: ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+- **JavaScript**: ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 Visit our website: [https://pictoglossary.surge.sh](https://pictoglossary.surge.sh)
