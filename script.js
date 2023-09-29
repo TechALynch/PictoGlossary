@@ -24,6 +24,8 @@ btn.addEventListener("click", async () => {
     try {
         // Make the API request
         let response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${inpWord}`);
+        const wordData = response.data[0];
+        console.log(wordData)
         console.log(response)
 
         // Drilling our data response and setting DOM
@@ -37,7 +39,8 @@ btn.addEventListener("click", async () => {
 
         // Get phonetic(s)
         let phoneticReturn = response.data[0].phonetic;
-        phonetic.innerHTML = `${phoneticReturn}`;
+        if (phoneticReturn)
+        phonetic.innerHTML = `${phoneticReturn}` || 'N/A'
 
         // Get Definition(s)
         let defReturn = response.data[0].meanings[0].definitions[0].definition;
@@ -47,7 +50,6 @@ btn.addEventListener("click", async () => {
         // let wordExReturn = response.data[0].meanings[0].definitions[0].example;
         // ex.innerHTML = `Ex. ${wordExReturn}`;  
         
-        const wordData = response.data[0];
          // Loop through meanings to find an example
          let exampleFound = false;
          // Loop through the meanings of the wordData
